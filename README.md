@@ -17,10 +17,10 @@ To obtain smooth motion of the cobot, the user has to provide a smooth input tra
 
 An approach to ensure a smooth motion profile is to use a skew sine to generate the trajectory. A skew sine moves from 0 to 1 with halve of a sine-wave, which due to its properties, provides a smooth derivative and second derivative (and third derivative....). This skew sine function which goes from 0 to 1 can be implemented by using:
 
-$$y = 1/2 - 0.5*cos(x) \qquad \text{for} \qquad 0 \leq x \leq \pi $$
+$$y = \frac{1}{2} - \frac{1}{2} cos(x) \qquad \text{for} \qquad 0 \leq x \leq \pi $$
 
 In example, to move from value (or position) $A$ to $B$ with a skew sine in a time period of 3 seconds:
 
-$$ P(t) = A + (B-A)*(1/2-1/2*\cos(t/3*\pi) $$
+$$ P(t) = A + (B-A)\left(\frac{1}{2}-\frac{1}{2}*cos(t \pi/3)\right) $$
 
 with $P$ the target position at each time step $t$. In the example script, the elapsed time is tracked by the counter $i$, which combined with the timestep $dt$, provides the total elapsed time.

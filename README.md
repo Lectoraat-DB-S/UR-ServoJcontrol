@@ -23,4 +23,4 @@ In example, to move from value (or position) $A$ to $B$ with a skew sine in a ti
 
 $$ P(t) = A + (B-A)\left(\frac{1}{2}-\frac{1}{2}*cos(t \pi/3)\right) $$
 
-with $P$ the target position at each time step $t$. In the example script, the elapsed time is tracked by the counter $i$, which combined with the timestep $dt$, provides the total elapsed time.
+with $P$ the target position at each time step $t$. In the example script, the elapsed time is tracked by the counter $i$, which combined with the timestep $dt$, provides the total elapsed time $t$.

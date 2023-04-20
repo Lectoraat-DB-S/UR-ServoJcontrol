@@ -15,4 +15,4 @@ The ServoJ_example.script provides an example for moving over a skew sinewave ba
 ## Remarks:
 To obtain smooth motion of the cobot, the user has to provide a smooth input trajectory. This means that the motion profile and the derivative of the motion profile (velocity) has to be at least a continous functio . Ideally, the motion profile, velocity profile, and the acceleration profile (second derivative) are all a continous and smooth function to minimize vibrations.
 
-An approach to ensure a smooth motion profile is to use a skew sine to generate the trajectory. A skew sine moves from 0 to 1 with halve of a sine-wave, which due to its properties, provides a smooth derivative and second derivative (and third derivative....). To move from value $A$
+An approach to ensure a smooth motion profile is to use a skew sine to generate the trajectory. A skew sine moves from 0 to 1 with halve of a sine-wave, which due to its properties, provides a smooth derivative and second derivative (and third derivative....). To move from value $$A$$ to $$B$$

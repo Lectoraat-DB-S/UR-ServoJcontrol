@@ -12,5 +12,5 @@ For optimal performance, it is recommended to update the target position at maxi
 The ServoJ_example.script provides an example for moving over a skew sinewave based trajectory for the TCP for a period of 5 seconds (resulting in a trajectory with 2500 target positions). Subsequently it provides a rectangular motion of the TCP.
 
 
-Remarks:
+## Remarks:
 To obtain smooth motion of the cobot, the user has to provide a smooth input trajectory. This means that the motion profile and the derivative of the motion profile (velocity) has to be at least a continous functio . Ideally, the motion profile, velocity profile, and the acceleration profile (second derivative) are all a continous and smooth function to minimize vibrations.

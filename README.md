@@ -9,7 +9,7 @@ The servoj command can be used for online realtime control of the joint position
 - a large number of waypoints have to be followed and/or where using a blendradius is not practical
 - a custom trajectory from a trajectory function (e.g. follow a sine wave) has to be followed
 
-For optimal performance, it is recommended to update the target position at maximum frequency (500 Hz), thus t=0.002. Note the specified target position is in joint coordinates (the angle of each of the cobot joints), which can be generated from TCP coordinates via the get_inverse_kin function.
+For optimal performance, it is recommended to update the target position at maximum frequency (500 Hz), thus $t=0.002$. Note the specified target position is in joint coordinates (the angle of each of the cobot joints), which can be generated from TCP coordinates via the get_inverse_kin function.
 
 
 ## Important remark:
@@ -24,3 +24,6 @@ In example, to move from value (or position) $A$ to $B$ with a skew sine in a ti
 $$ P(t) = A + (B-A)\left(\frac{1}{2}-\frac{1}{2}*cos(t \pi/3)\right) $$
 
 with $P$ the target position at each time step $t$. In the example script, the elapsed time is tracked by the counter $i$, which combined with the timestep $dt$, provides the total elapsed time $t$.
+
+## Notes:
+- This example is created for an e-series Universal Robot. It is untested for CB3 series. For CB3-series, the refresh rate for CB3 series is limited to 125 Hz, thus a timestep of $t=0.008$ has to be used. 

@@ -1,0 +1,76 @@
+# URscript 
+# 20-4-2023
+# 
+
+#Get current joint and TCP position
+q_0 = get_actual_joint_positions()
+p_0 = get_actual_tcp_pose()
+
+
+#Global settings
+P = 500
+dt = 0.002
+
+
+#First trajectory, mixed skew-sine motion on multiple axis
+#Settings
+t = 5
+Amplitude = 0.1
+steps = t / dt
+i=0
+
+#Loop through motion
+while i < steps:
+        x = i*dt/t*3.14159
+	      p_target = pose_add(p_0,p[4*Amplitude*(0.5-0.5*cos(x)),Amplitude*(0.5-0.5*cos(8*x)),Amplitude*(0.5-0.5*cos(3*x)),0.6*(0.5-0.5*cos(2*x)),0.35*(0.5-0.5*cos(4*x)),0])
+	      servoj(get_inverse_kin(p_target),0,0,0.002,0.1,P)
+        i = i + 1
+end
+
+#reset position
+movej(q_0,0.5,0.5,0,0)
+
+
+#Second trajectory, square motion profile through 4 waypoints
+#Settings
+t = 1
+Amplitude = 0.25
+steps = t / dt
+i = 0
+
+
+#Loop through motion
+#First edge
+while i < steps:
+        x = i*dt/t*3.14159
+	      p_target = pose_add(p_0,p[Amplitude*(0.5-0.5*cos(x)),0,0,0,0,0])
+	      servoj(get_inverse_kin(p_target),0,0,0.002,0.1,P)
+        i = i + 1
+end
+#Second edge
+i=0
+while i < steps:
+        x = i*dt/t*3.14159
+	p_target = pose_add(p_0,p[Amplitude,Amplitude*(0.5-0.5*cos(x)),0,0,0,0])
+	servoj(get_inverse_kin(p_target),0,0,0.002,0.1,P)
+        i = i + 1
+end
+#Third edge
+i=0
+while i < steps:
+        x = i*dt/t*3.14159
+	      p_target = pose_add(p_0,p[Amplitude-Amplitude*(0.5-0.5*cos(x)),Amplitude,0,0,0,0])
+	      servoj(get_inverse_kin(p_target),0,0,0.002,0.1,P)
+        i = i + 1
+end
+#Fourth edge
+i=0
+while i < steps:
+        x = i*dt/t*3.14159
+	p_target = pose_add(p_0,p[0,Amplitude-Amplitude*(0.5-0.5*cos(x)),0,0,0,0])
+	servoj(get_inverse_kin(p_target),0,0,0.002,0.1,P)
+        i = i + 1
+end
+
+#reset position
+movej(q_0,0.1,0.1,0.0)	

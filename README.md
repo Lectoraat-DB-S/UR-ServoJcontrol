@@ -15,4 +15,12 @@ The ServoJ_example.script provides an example for moving over a skew sinewave ba
 ## Remarks:
 To obtain smooth motion of the cobot, the user has to provide a smooth input trajectory. This means that the motion profile and the derivative of the motion profile (velocity) has to be at least a continous functio . Ideally, the motion profile, velocity profile, and the acceleration profile (second derivative) are all a continous and smooth function to minimize vibrations.
 
-An approach to ensure a smooth motion profile is to use a skew sine to generate the trajectory. A skew sine moves from 0 to 1 with halve of a sine-wave, which due to its properties, provides a smooth derivative and second derivative (and third derivative....). To move from value $$A$$ to $$B$$
+An approach to ensure a smooth motion profile is to use a skew sine to generate the trajectory. A skew sine moves from 0 to 1 with halve of a sine-wave, which due to its properties, provides a smooth derivative and second derivative (and third derivative....). This skew sine function which goes from 0 to 1 can be implemented by using:
+
+$$y = 0.5 - 0.5*cos(x) \qquad \text{for} \qquad 0 \leq x \leq \pi $$
+
+In example, to move from value (or position) $A$ to $B$ with a skew sine in a time period of 3 seconds:
+
+$$P(t) = A + (B-A)*(1/2-1/2*\cos(t/3*\pi)
+
+with $P$ the target position at each time step $t$. In the example script, the elapsed time is tracked by the counter $i$, which combined with the timestep $dt$, provides the total elapsed time.

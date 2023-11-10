@@ -9,7 +9,7 @@ The servoj command can be used for online realtime control of the joint position
 - a large number of waypoints have to be followed and/or where using a blendradius is not practical
 - a custom trajectory from a trajectory function (e.g. follow a sine wave) has to be followed
 
-For optimal performance, it is recommended to update the target position at maximum frequency (500 Hz), thus $t=0.002$. Note the specified target position is in joint coordinates (the angle of each of the cobot joints), which can be generated from TCP coordinates via the get_inverse_kin function.
+For optimal performance, it is recommended to update the target position at maximum frequency (500 Hz), thus $t=0.002$ s. Note the specified target position is in joint coordinates (the angle of each of the cobot joints), which can be generated from TCP coordinates via the get_inverse_kin function.
 
 
 ## Important remark:
